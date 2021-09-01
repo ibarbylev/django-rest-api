@@ -13,8 +13,11 @@ def polls_list(request):
 
 def polls_detail(request, pk):
     poll = get_object_or_404(Poll, pk=pk)
+    choices = Choice.objects.filter(poll__question=poll.question)
+    list_choices = [c.choice_text for c in choices]
     data = {"results": {
         "question": poll.question,
+        "choices": list_choices,
         "created_by": poll.created_by.username,
         "pub_date": poll.pub_date
     }}
