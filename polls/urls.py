@@ -1,8 +1,14 @@
-from django.contrib import admin
 from django.urls import path, include
 
 # from polls import views
+from rest_framework.routers import DefaultRouter
+
 from polls import apiviews
+
+
+router = DefaultRouter()
+router.register('polls', apiviews.PollViewSet, basename='polls')
+
 urlpatterns = [
     # path('polls/', views.polls_list, name='polls_list'),
     # path('polls/<int:pk>/', views.polls_detail, name='polls_detail'),
