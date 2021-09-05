@@ -12,7 +12,7 @@ class VoteSerializer(serializers.ModelSerializer):
 
 
 class ChoiceSerializer(serializers.ModelSerializer):
-    votes = VoteSerializer(many=True, required=False)
+    votes = VoteSerializer(many=True, read_only=True, required=False)
 
     class Meta:
         model = Choice
